@@ -1,0 +1,22 @@
+name: Setup nctl
+description: Install nctl, the command line interface for the Nine API and Deploio.
+author: Nine Internet Solutions AG
+branding:
+  icon: terminal
+  color: blue
+
+inputs:
+  version:
+    description: nctl version to install, e.g. "1.20.0". Defaults to the latest release.
+    required: false
+    default: latest
+
+outputs:
+  version:
+    description: The installed nctl version.
+  path:
+    description: The directory containing the nctl binary.
+
+runs:
+  using: node24
+  main: dist/index.js

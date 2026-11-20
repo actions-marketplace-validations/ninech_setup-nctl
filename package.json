@@ -1,0 +1,35 @@
+{
+  "name": "setup-nctl",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GitHub Action to install nctl, the command line interface for the Nine API and Deploio",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": "^24"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint --deny-warnings",
+    "test": "vitest run",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "all": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.1",
+    "@actions/tool-cache": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.6",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
+    "oxfmt": "^0.70.0",
+    "oxlint": "^1.85.0",
+    "oxlint-tsgolint": "^7.0.2003",
+    "semantic-release": "^25.0.9",
+    "tsdown": "^0.23.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  }
+}

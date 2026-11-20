@@ -1,0 +1,19 @@
+name: PR title
+
+# Releases are derived from the commit messages on main. With squash merges
+# the PR title becomes the commit message, so it has to be a conventional
+# commit.
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  conventional-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v6
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

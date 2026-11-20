@@ -1,0 +1,36 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    # Runtime dependencies are bundled into dist/, so updating them releases a
+    # patch version. Development dependency updates don't release.
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope
+    cooldown:
+      default-days: 3
+    ignore:
+      # Version 10 needs conventional-changelog-writer 9, which semantic-release
+      # 25 doesn't ship. Release notes fail to render, but only at release time.
+      - dependency-name: conventional-changelog-conventionalcommits
+        update-types: ['version-update:semver-major']
+    groups:
+      dev-dependencies:
+        dependency-type: development
+      dependencies:
+        dependency-type: production
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: ci
+    cooldown:
+      default-days: 3
+    groups:
+      github-actions:
+        patterns: ['*']
